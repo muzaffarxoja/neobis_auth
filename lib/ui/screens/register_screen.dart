@@ -44,59 +44,80 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const IconButton(
-          icon: Icons.back_hand_outlined,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
           onPressed: () {},
         ),
-        title: Text('Registration'),
+        title: Center(
+          child: Text(
+            'Registration',
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: _passwordController,
-                decoration: InputDecoration(labelText: 'Password'),
-                obscureText: true,
-                onChanged: _onPasswordChanged,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a password';
-                  }
-                  if (!hasUpperCase ||
-                      !hasLowerCase ||
-                      !hasDigit ||
-                      !hasSpecialCharacter ||
-                      !hasValidLength) {
-                    return 'Password does not meet all conditions';
-                  }
-                  return null;
-                },
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Text(
+              'Create acount \nLorby',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 24,
+                color: Color(0xff212121),
               ),
-              SizedBox(height: 10),
-              PasswordCriteriaRow(
-                  text: 'At least 1 uppercase letter', isValid: hasUpperCase),
-              PasswordCriteriaRow(
-                  text: 'At least 1 lowercase letter', isValid: hasLowerCase),
-              PasswordCriteriaRow(text: 'At least 1 digit', isValid: hasDigit),
-              PasswordCriteriaRow(
-                  text: 'At least 1 special character',
-                  isValid: hasSpecialCharacter),
-              PasswordCriteriaRow(
-                  text: '8 to 15 characters long', isValid: hasValidLength),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    // Process the registration
-                  }
-                },
-                child: Text('Register'),
+            ),
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: _passwordController,
+                    decoration: InputDecoration(labelText: 'Password'),
+                    obscureText: true,
+                    onChanged: _onPasswordChanged,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a password';
+                      }
+                      if (!hasUpperCase ||
+                          !hasLowerCase ||
+                          !hasDigit ||
+                          !hasSpecialCharacter ||
+                          !hasValidLength) {
+                        return 'Password does not meet all conditions';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  PasswordCriteriaRow(
+                      text: 'At least 1 uppercase letter',
+                      isValid: hasUpperCase),
+                  PasswordCriteriaRow(
+                      text: 'At least 1 lowercase letter',
+                      isValid: hasLowerCase),
+                  PasswordCriteriaRow(
+                      text: 'At least 1 digit', isValid: hasDigit),
+                  PasswordCriteriaRow(
+                      text: 'At least 1 special character',
+                      isValid: hasSpecialCharacter),
+                  PasswordCriteriaRow(
+                      text: '8 to 15 characters long', isValid: hasValidLength),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState?.validate() ?? false) {
+                        // Process the registration
+                      }
+                    },
+                    child: Text('Register'),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
