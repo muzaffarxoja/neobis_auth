@@ -130,7 +130,3 @@ class PasswordCriteriaRow extends StatelessWidget {
     );
   }
 }
-
-void main() => runApp(MaterialApp(
-      home: RegisterScreen(),
-    ));
