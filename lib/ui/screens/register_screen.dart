@@ -44,7 +44,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        leading: const IconButton(
+          icon: Icons.back_hand_outlined,
+          onPressed: () {},
+        ),
+        title: Text('Registration'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
