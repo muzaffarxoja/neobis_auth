@@ -1,5 +1,5 @@
  import 'package:flutter/material.dart';
-import 'package:neobis_flutter_auth/ui/screens/register_screen.dart';
+import 'package:neobis_flutter_auth/views/register_view.dart';
 
 void main() => runApp(MyApp());
 
