@@ -20,6 +20,7 @@ class AuthViewModel extends ChangeNotifier {
       final user = await _authRepository.login(email, password);
       if (user != null) {
         _users.add(user);
+        notifyListeners();
       }
     } catch (e) {
       _setErrorMessage(e.toString());
@@ -36,6 +37,7 @@ class AuthViewModel extends ChangeNotifier {
       final user = await _authRepository.register(email, password);
       if (user != null) {
         _users.add(user);
+        notifyListeners();
       }
     } catch (e) {
       _setErrorMessage(e.toString());
