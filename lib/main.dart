@@ -1,24 +1,59 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:neobis_flutter_auth/views/register_view.dart';
+import 'package:provider/provider.dart';
+import 'viewmodels/auth_viewmodel.dart';
+import 'views/login_view.dart';
+import 'views/home_view.dart';
+import 'package:go_router/go_router.dart';
 
-void main() => runApp(MyApp());
+const String login_page = '/login_page';
+const String register_page = '/register_page';
+const String home_page = '/home_page';
+const String splash_screen = '/splash_screen';
+
+final _router = GoRouter(
+  initialLocation: login_page,
+  //initialLocation: filter,
+
+  routes: [
+    GoRoute(
+      path: login_page,
+      builder: (context, state) => LoginView(),
+    ),
+    GoRoute(
+      path: register_page,
+      builder: (context, state) => RegisterScreen(),
+    ),
+    GoRoute(
+      path: home_page,
+      builder: (context, state) => HomeView(),
+    ),
+  ],
+);
+
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AuthViewModel(),
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
+    return MaterialApp.router(
+      routerConfig: _router,
+      title: 'Flutter MVVM Auth',
       theme: ThemeData(
-        // useMaterial3: false,
         primarySwatch: Colors.blue,
       ),
-      // A widget which will be started on application startup
-      home: RegisterScreen(),
+      // home: Consumer<AuthViewModel>(
+      //   builder: (context, authViewModel, child) {
+      //     return authViewModel.users.isNotEmpty ? HomeView() : LoginView();
+      //   },
+      // ),
     );
   }
 }
