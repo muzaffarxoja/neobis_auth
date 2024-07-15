@@ -1,12 +1,14 @@
 import 'package:flutter_regex/flutter_regex.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:neobis_flutter_auth/widgets/custom_text_form_field.dart';
+import '../widgets/custom_elevated_button.dart';
 
-String email = 'abc@gmail.com';
-String phone = '+998 99 870 99 99';
+// String email = 'abc@gmail.com';
+// String phone = '+998 99 870 99 99';
 
-bool isEmail = email.isEmail();
-bool isPhone = phone.isPhone();
+// bool isEmail = email.isEmail();
+// bool isPhone = phone.isPhone();
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -14,8 +16,14 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController loginController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController passwordConfirmController =
+      TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   bool hasUpperCase = false;
   bool hasLowerCase = false;
   bool hasDigit = false;
@@ -73,6 +81,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               key: _formKey,
               child: Column(
                 children: [
+                  CustomTextFormField(
+                      controller: emailController,
+                      labelText: 'Enter Emai',
+                      obscureText: false),
+                  SizedBox(height: 14),
+                  CustomTextFormField(
+                      controller: loginController,
+                      labelText: 'Enter login',
+                      obscureText: false),
+                  SizedBox(height: 14),
                   TextFormField(
                     controller: _passwordController,
                     decoration: InputDecoration(labelText: 'Password'),
@@ -106,14 +124,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       isValid: hasSpecialCharacter),
                   PasswordCriteriaRow(
                       text: '8 to 15 characters long', isValid: hasValidLength),
-                  SizedBox(height: 20),
-                  ElevatedButton(
+                  SizedBox(height: 14),
+                  CustomTextFormField(
+                      controller: loginController,
+                      labelText: 'Confirm password',
+                      obscureText: false),
+                  SizedBox(height: 14),
+                  CustomElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         // Process the registration
                       }
                     },
-                    child: Text('Register'),
+                    text: 'Register',
                   ),
                 ],
               ),
