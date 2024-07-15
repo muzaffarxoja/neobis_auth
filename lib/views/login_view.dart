@@ -3,73 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:neobis_flutter_auth/viewmodels/auth_viewmodel.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../widgets/custom_password_field.dart';
-
-// class CustomTextFormField extends StatelessWidget {
-//   final TextEditingController controller;
-//   final String labelText;
-//   final bool obscureText;
-//   final String? Function(String?)? validator;
-
-//   CustomTextFormField({
-//     required this.controller,
-//     required this.labelText,
-//     required this.obscureText,
-//     this.validator,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextFormField(
-//       controller: controller,
-//       decoration: InputDecoration(labelText: labelText),
-//       obscureText: obscureText,
-//       validator: validator,
-//     );
-//   }
-// }
-
-// class CustomPasswordField extends StatefulWidget {
-//   final TextEditingController controller;
-//   final String labelText;
-//   final String? Function(String?)? validator;
-
-//   CustomPasswordField({
-//     required this.controller,
-//     required this.labelText,
-//     this.validator,
-//   });
-
-//   @override
-//   _CustomPasswordFieldState createState() => _CustomPasswordFieldState();
-// }
-
-// class _CustomPasswordFieldState extends State<CustomPasswordField> {
-//   bool _obscureText = true;
-
-//   void _togglePasswordVisibility() {
-//     setState(() {
-//       _obscureText = !_obscureText;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextFormField(
-//       controller: widget.controller,
-//       obscureText: _obscureText,
-//       decoration: InputDecoration(
-//         labelText: widget.labelText,
-//         suffixIcon: IconButton(
-//           icon: Icon(
-//             _obscureText ? Icons.visibility_off : Icons.visibility,
-//           ),
-//           onPressed: _togglePasswordVisibility,
-//         ),
-//       ),
-//       validator: widget.validator,
-//     );
-//   }
-// }
+import '../widgets/custom_elevated_button.dart';
+import '../main.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -127,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                   SizedBox(height: 20),
                   authViewModel.isLoading
                       ? CircularProgressIndicator()
-                      : ElevatedButton(
+                      : CustomElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               authViewModel.login(
@@ -136,8 +72,12 @@ class _LoginViewState extends State<LoginView> {
                               );
                             }
                           },
-                          child: Text('Login'),
+                          text: 'Login',
                         ),
+                  SizedBox(height: 28),
+                  TextButton(
+                      onPressed: () => context.push(register_page),
+                      child: Text('I don\'t have account')),
                   if (authViewModel.errorMessage != null)
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),

@@ -1,5 +1,6 @@
 import 'package:flutter_regex/flutter_regex.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 String email = 'abc@gmail.com';
 String phone = '+998 99 870 99 99';
@@ -46,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {},
+          onPressed: () => context.pop(),
         ),
         title: Center(
           child: Text(
