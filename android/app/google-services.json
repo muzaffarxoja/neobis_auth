@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "528931001292",
-    "project_id": "auth-badb4",
-    "storage_bucket": "auth-badb4.appspot.com"
+    "project_number": "307249040732",
+    "project_id": "auth-88506",
+    "storage_bucket": "auth-88506.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:528931001292:android:e2fca1de37dd6785f70369",
+        "mobilesdk_app_id": "1:307249040732:android:35f8130f612d8e26da8599",
         "android_client_info": {
           "package_name": "com.example.neobis_flutter_auth"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDGOCKpGdrab1Nn4UJ6Gr4_rBnomXAV0jg"
+          "current_key": "AIzaSyBdOA59JuRlrQzDbllf2TuO5yy2wUSnHpM"
         }
       ],
       "services": {
