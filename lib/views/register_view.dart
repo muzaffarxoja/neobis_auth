@@ -126,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       text: '8 to 15 characters long', isValid: hasValidLength),
                   SizedBox(height: 14),
                   CustomTextFormField(
-                      controller: loginController,
+                      controller: passwordConfirmController,
                       labelText: 'Confirm password',
                       obscureText: false),
                   SizedBox(height: 14),

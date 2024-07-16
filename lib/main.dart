@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neobis_flutter_auth/views/register_view.dart';
+import 'package:neobis_flutter_auth/views/splash_screeen.dart';
 import 'package:provider/provider.dart';
 import 'viewmodels/auth_viewmodel.dart';
 import 'views/login_view.dart';
@@ -12,9 +13,7 @@ const String home_page = '/home_page';
 const String splash_screen = '/splash_screen';
 
 final _router = GoRouter(
-  initialLocation: login_page,
-  //initialLocation: filter,
-
+  initialLocation: splash_screen,
   routes: [
     GoRoute(
       path: login_page,
@@ -27,6 +26,10 @@ final _router = GoRouter(
     GoRoute(
       path: home_page,
       builder: (context, state) => HomeView(),
+    ),
+    GoRoute(
+      path: splash_screen,
+      builder: (context, state) => const SplashScrenn(),
     ),
   ],
 );
