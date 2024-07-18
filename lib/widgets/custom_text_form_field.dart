@@ -39,14 +39,13 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(12), // Border radius
           borderSide: BorderSide(
             color:
-                Theme.of(context).errorColor, // Border color when error occurs
+                Colors.red, // Border color when error occurs
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12), // Border radius
           borderSide: BorderSide(
-            color: Theme.of(context)
-                .errorColor, // Border color when focused and error occurs
+            color: Colors.red, // Border color when focused and error occurs
           ),
         ),
       ),
